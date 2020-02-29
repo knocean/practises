@@ -36,35 +36,17 @@ As people, we strive to live good lives. Good work is one part of a good life, s
 ## Use Text
 
 - text is ubiquitous: documents, email, messaging, issues, web forms, terminals, etc.
-- use UTF-8
+- use UTF-8 for pretty much everything
 - use your preferred text editor for pretty much everything
-- document formats
-  - Markdown
-  - HTML, separating content from style
-  - LaTeX, for advanced layout
-- tabular data
-  - TSV, CSV
-  - SQL
-  - Excel: for aggregation, visualization
-- structured data
-  - EDN: perfect balance, but mostly limited to Clojure
-  - YAML: human readable, overly complex syntax
-  - XML: well-structured, hard to read
-  - Turtle: for RDF
-  - Manchester: for OWL
-  - JSON: poor balance of features but ubiquitous
+- there's a spectrum from unstructured to highly structured text
 
 ## Use Small, Sharp Tools
 
-- everything is a file, most files are streams of delimited text
-- Unix coreutils: ls, grep, find, sed, awk
-  - other standard Unix tools: ssh, curl
-  - related: tree, mosh
-- Unix pipes!
-- GNU Make
-- xlsx2csv
-- Pandoc
-- RDF rapper
+- use the right tool for the job
+- break complex jobs down into a series of simple jobs
+- collect a toolbox of good tools and master them
+- small, sharp tools are easier to learn and remember
+- they stand the test of time
 
 ## Use the Tools we Build
 
@@ -95,7 +77,7 @@ There's a rough spectrum of automation:
 
 - text is easy to diff and patch
 - git works best with text
-- don't story generated files in version control
+- don't store generated files in version control
 - store all the information needed to rebuild:
   - versioned install details
     - NixOS `shell.nix`
@@ -109,7 +91,7 @@ There's a rough spectrum of automation:
 
 Life is easier if we can:
 
-- see at the source of the tools we use, especially when there's a bug
+- see the source of the tools we use, especially when there's a bug
 - reuse the tools we write for the next project
 
 Arguably, good science requires open source tools.
@@ -119,6 +101,7 @@ Arguably, good science requires open source tools.
 
 Based on those principles, these are the common tools and platforms that we build on:
 
+- Text Formats
 - Unix (Linux, macOS, NixOS): coreutils, command-line tools
 - GNU Make
 - git, GitHub
@@ -128,17 +111,39 @@ Based on those principles, these are the common tools and platforms that we buil
 - Clojure: an excellent language, but "obscure"
 - SQLite, Postgres
 
+## Text Formats
+
+- document formats
+  - Markdown
+  - HTML, separating content from style
+  - LaTeX, for advanced layout
+- tabular data
+  - TSV, CSV
+  - SQL
+  - Excel: for aggregation, visualization
+- structured data
+  - EDN: perfect balance, but mostly limited to Clojure
+  - YAML: human readable, overly complex syntax
+  - XML: well-structured, hard to read
+  - Turtle: for RDF
+  - Manchester: for OWL
+  - JSON: poor balance of features but ubiquitous
+
 ## Unix
 
-- use Linux for servers
+- use Linux for servers, prefer NixOS
 - macOS is acceptable for desktops/laptops
 - provisioning
   - prefer NixOS
   - otherwise use Ansible 2
   - prefer official packages
 - use AWS EC2 but be careful about platform lock-in
+- everything is a file, most files are streams of delimited text
+- Unix coreutils: ls, grep, find, sed, awk
+- standard Unix tools: ssh, curl
+- good command-line tools: tree, mosh, xlsx2csv, Pandoc, RDF rapper
 
-# GNU Make
+## GNU Make
 
 - tell Make all the prerequisites, so it can build the full dependency graph
 - tell Make all the outputs, preferably just one
@@ -151,7 +156,7 @@ Based on those principles, these are the common tools and platforms that we buil
 ## World Wide Web
 
 - stick to basics!
-- use HTTPS whenever possible, prefer Let's Encrypt
+- use HTTPS whenever possible, prefer Let's Encrypt for SSL certificates
 - HTML is good for display, but prefer source data in simpler formats, e.g. Markdown
 - use Bootstrap 4, avoid custom CSS
 - prefer Nginx, but Apache 2 is fine
