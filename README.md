@@ -73,12 +73,23 @@ Life is easier if everything has one canonical source, with one canonical name.
 
 There's a rough spectrum of automation:
 
-- ad hoc jobs: Unix coreutils, pipes, "one liners"
-- small jobs: Bash script
-- medium jobs: Python script
-- large jobs: new command-line tool
-- job management: GNU Make
-- orchestration
+- ad hoc:
+    - Unix shell: coreutils, pipes, "one liners", `history`
+    - Excel
+- fully manual:
+    - use a checklist
+    - try a [Do-Nothing Script](https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/) in Bash or Python
+- semi-automatic:
+    - start with your Do-Nothing Script
+    - automate what you can
+    - when can't automate a step, print instructions and wait for the user
+    - example: ROBOT [release.sh](https://github.com/ontodev/robot/blob/master/util/release.sh)
+- fully-automatic:
+    - small jobs, simple control flow: Bash script
+    - medium jobs: Python script
+    - large jobs: new command-line tool
+    - job management: GNU Make
+    - orchestration: NixOS, Docker
 
 ## Version Control
 
@@ -111,12 +122,13 @@ At Knocean we prefer the [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Cl
 Based on those principles, these are the common tools and platforms that we build on:
 
 - Text Formats
-- Unix (Linux, macOS, NixOS): coreutils, command-line tools
-- GNU Make
-- Git and GitHub
 - World Wide Web
-- Java: a poor language with an excellent runtime (JVM) and many good libraries
+- Unix (Linux, macOS, NixOS): coreutils, command-line tools
+- Git and GitHub
+- GNU Make
+- Bash: a weird language, very good for simple scripts, but switch to Python for anything fancy
 - Python: an acceptable language, lingua franca, good for scripting
+- Java: a poor language with an excellent runtime (JVM) and many good libraries
 - Clojure: an excellent language, but "obscure"
 - SQLite, Postgres
 
@@ -141,47 +153,6 @@ Based on those principles, these are the common tools and platforms that we buil
     - RDFa: for RDF in HTML
     - JSON-LD: for sharing RDF with tools that only speak JSON
 
-## Unix
-
-- use Linux for servers, prefer NixOS
-- macOS is acceptable for desktops/laptops
-- provisioning
-    - prefer NixOS
-    - otherwise use Ansible 2
-    - prefer official packages
-- use AWS EC2 but be careful about platform lock-in
-- everything is a file, most files are streams of delimited text
-- Unix coreutils: ls, grep, find, sed, awk
-- standard Unix tools: ssh, curl
-- good command-line tools: tree, mosh, xlsx2csv, Pandoc, RDF rapper
-
-## GNU Make
-
-- tell Make all the prerequisites, so it can build the full dependency graph
-- tell Make all the outputs, preferably just one
-- keep recipes to a handful of lines
-- convert larger recipes to Python scripts
-- try to match script arguments with prerequisites exactly, then just `python3 $^ $@`
-- use Make [functions](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html) and [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html), but strive for clarity
-- empty files are OK
-
-### GNU Make Defaults
-
-```
-###Configuration
-#
-# These are standard options to make Make sane:
-# <http://clarkgrubb.com/makefile-style-guide#toc2>
-
-MAKEFLAGS += --warn-undefined-variables
-SHELL := bash
-.SHELLFLAGS := -eu -o pipefail -c
-.DEFAULT_GOAL := all
-.DELETE_ON_ERROR:
-.SUFFIXES:
-.SECONDARY:
-```
-
 ## World Wide Web
 
 - stick to basics!
@@ -202,6 +173,20 @@ SHELL := bash
 - use JavaScript for progressive enhancement
     - site must work without JavaScript, for cURL etc.
     - corollary: avoid Single Page Web Applications
+
+## Unix
+
+- use Linux for servers, prefer NixOS
+- macOS is acceptable for desktops/laptops
+- provisioning
+    - prefer NixOS
+    - otherwise use Ansible 2
+    - prefer official packages
+- use AWS EC2 but be careful about platform lock-in
+- everything is a file, most files are streams of delimited text
+- Unix coreutils: ls, grep, find, sed, awk
+- standard Unix tools: ssh, curl
+- good command-line tools: tree, mosh, xlsx2csv, Pandoc, RDF rapper
 
 ## Git and GitHub
 
@@ -232,15 +217,42 @@ SHELL := bash
     - order of preference for cards: PR link, issue link, text
 - use Travis CI
 
-## Java
+## GNU Make
 
-- ubiquitous, cross-platform
-- strong ecosystem of heavy libraries, especially for the Semantic Web
-    - we mainly use Java for ROBOT, which relies on OWLAPI and Apache Jena
-- use Java 8 features
-- use Maven
-- use Google Java Style and fmt-maven-plugin
-- write imperative code, rely on collections, avoid excessive Object Oriented design
+- tell Make all the prerequisites, so it can build the full dependency graph
+- tell Make all the outputs, preferably just one
+- keep recipes to a handful of lines
+- convert larger recipes to Python scripts
+- try to match script arguments with prerequisites exactly, then just `python3 $^ $@`
+- use Make [functions](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html) and [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html), but strive for clarity
+- empty files are OK
+
+### GNU Make Defaults
+
+```
+###Configuration
+#
+# These are standard options to make Make sane:
+# <http://clarkgrubb.com/makefile-style-guide#toc2>
+
+MAKEFLAGS += --warn-undefined-variables
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
+.DEFAULT_GOAL := all
+.DELETE_ON_ERROR:
+.SUFFIXES:
+.SECONDARY:
+```
+
+## Bash
+
+- use [ShellCheck](https://www.shellcheck.net)
+- use [Unofficial Bash Strict Mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+
+```
+set -euo pipefail
+IFS=$'\n\t'
+```
 
 ## Python
 
@@ -254,6 +266,16 @@ SHELL := bash
 - use `virtualenv`
 - use `argparse`
 - use `pytest`
+
+## Java
+
+- ubiquitous, cross-platform
+- strong ecosystem of heavy libraries, especially for the Semantic Web
+    - we mainly use Java for ROBOT, which relies on OWLAPI and Apache Jena
+- use Java 8 features
+- use Maven
+- use Google Java Style and fmt-maven-plugin
+- write imperative code, rely on collections, avoid excessive Object Oriented design
 
 ## Clojure
 
