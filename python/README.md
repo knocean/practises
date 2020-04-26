@@ -14,15 +14,15 @@ Use [`venv`](https://docs.python.org/3/library/venv.html?highlight=venv#module-v
 to isolate your Python version and libraries from other projects.
 We standardize on a `_venv` directory:
 
-```
+```shell
 $ python3 -m venv _venv
 $ source _venv/bin/activate
 ```
 
 Use `pip` and a `requirements.txt` to install libraries:
 
-```
-pip install -r requirements.txt
+```shell
+$ pip install -r requirements.txt
 ```
 
 It's better to specify exact versions of your dependencies.
@@ -41,7 +41,7 @@ Our main change to the defaults is 100 character lines.
 We also ignore [E203](https://www.flake8rules.com/rules/E203.html)
 and [W503](https://www.flake8rules.com/rules/W503.html).
 
-```
+```make
 PYTHON_FILES := src tests
 
 .PHONY: lint
@@ -68,7 +68,7 @@ test:
 I really like the [f-string](https://www.python.org/dev/peps/pep-0498/)
 syntax introduced in Python 3.6.
 
-```
+```python
 print(f"This is {foo} and {bar.upper()}.")
 ```
 
@@ -79,7 +79,7 @@ Use Unix line endings.
 It's usually convenient to use `DictReader` and `DictWriter`,
 rather than the default `reader` and `writer`.
 
-```
+```python
 import csv
 
 with open(path) as fh:
