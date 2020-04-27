@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# A hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments. The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# Author: Michael Cuffaro <consulting@michaelcuffaro>
+
+BLACK="black --line-length 100 --quiet"
+FLAKE8="flake8 --max-line-length 100 --ignore E203,W503"
+
+# Redirect output to stderr.
+exec 1>&2
+
+staged_files=$(git diff --diff-filter=d --name-only --cached | grep -P "\.pyi?$")
+
+echo "Checking code style of staged python source files using black ..."
+black_compliant=0
+for path in $staged_files
+do
+    # Get the contents of the file in the staged area:
+    contents=$(git show :${path})
+    echo "$contents" | ${BLACK} --check -
+    if [[ $? -ne 0 ]]
+    then
+        black_compliant=1
+        echo "$contents" | ${BLACK} - > $path
+    fi
+done
+
+if [[ $black_compliant -ne 0 ]]
+then
+    echo -e "Some of your staged files are not compliant with black.\n\
+These files have been reformatted in accordance with black style, but the changes have not been\n\
+staged. Please examine the changes and re-stage the files before re-committing."
+    exit 1
+fi
+
+echo -e "\nRunning flake8 on staged python source files ..."
+flake8_compliant=0
+for path in $staged_files
+do
+    result=$(git show :${path} | ${FLAKE8} -)
+    if [[ $result = *[![:blank:]]* ]]
+    then
+        flake8_compliant=1
+        # Note that if the path contains any forward slashes these need to be escaped for sed:
+        echo "$result" | sed "s/^stdin/${path/\//\\/}/"
+    fi
+done
+
+exit $flake8_compliant
+
+

@@ -6,13 +6,13 @@ We use Python 3.6+ for largish scripts and smallish libraries.
 ## Links
 
 - [Python 3 documentation](https://docs.python.org/3/)
-    - `!py` with [DuckDuckGo](https://duckduckgo.com)
+    - Search with `!py` in [DuckDuckGo](https://duckduckgo.com)
 
 ## Setup
 
-Use [`venv`](https://docs.python.org/3/library/venv.html?highlight=venv#module-venv)
+Use [`venv`](https://docs.python.org/3/library/venv.html)
 to isolate your Python version and libraries from other projects.
-We standardize on a `_venv` directory:
+Each project using Python should have a `_venv` subdirectory.
 
 ```shell
 $ python3 -m venv _venv
@@ -41,22 +41,34 @@ Our main change to the defaults is 100 character lines.
 We also ignore [E203](https://www.flake8rules.com/rules/E203.html)
 and [W503](https://www.flake8rules.com/rules/W503.html).
 
+If you're using a [`Makefile`](Makefile), then these are good defaults:
+
 ```make
 PYTHON_FILES := src tests
-
-.PHONY: lint
-lint:
-	flake8 --max-line-length 100 --ignore E203,W503 $(PYTHON_FILES)
-	black --line-length 100 --check $(PYTHON_FILES)
-
-.PHONY: format
-format:
-	black --line-length 100 $(PYTHON_FILES)
 
 .PHONY: test
 test:
 	pytest tests
+
+.PHONY: lint
+lint:
+	flake8 --max-line-length 100 --ignore E203,W503 $(PYTHON_FILES)
+	black --line-length 100 --quiet --check $(PYTHON_FILES)
+
+.PHONY: format
+format:
+	black --line-length 100 $(PYTHON_FILES)
 ```
+
+You can use a basic `.git/hooks/pre-commit` like this:
+
+```
+#!/bin/sh
+make test lint
+```
+
+This [`pre-commit`](pre-commit) script is more careful with unstaged changes,
+and doesn't require a `Makefile`.
 
 ## Tests
 
