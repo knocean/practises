@@ -176,7 +176,7 @@ Based on those principles, these are the common tools and platforms that we buil
 
 ## Unix
 
-- use Linux for servers, prefer NixOS
+- use Linux for servers, prefer [NixOS](nixos/)
 - macOS is acceptable for desktops/laptops
 - provisioning
     - prefer NixOS
