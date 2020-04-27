@@ -226,6 +226,7 @@ Based on those principles, these are the common tools and platforms that we buil
 - try to match script arguments with prerequisites exactly, then just `python3 $^ $@`
 - use Make [functions](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html) and [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html), but strive for clarity
 - empty files are OK
+- combine with [`watchexec`](https://github.com/watchexec/watchexec)
 
 ### GNU Make Defaults
 
@@ -254,18 +255,14 @@ set -euo pipefail
 IFS=$'\n\t'
 ```
 
-## Python
+## [Python](python/)
 
 - ubiquitous, cross-platform
 - good for scripting, interactive development
 - strong ecosystem of libraries for almost anything
 - use for anything more than about 10 lines of Bash
-- use Python 3
+- use Python 3.6+
 - write imperative code, avoid Object Oriented design
-- use `requirements.txt`
-- use `virtualenv`
-- use `argparse`
-- use `pytest`
 
 ## Java
 
