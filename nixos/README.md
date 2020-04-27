@@ -233,10 +233,10 @@ in {
 }
 ```
 
-You can test this with `nix-eval`:
+You can test this with `nix-instantiate`:
 
 ```shell
-$ nix eval -f example.nix ""
+$ nix-instantiate --eval --strict example.nix
 { foo = { name = "Name: bar"; }; }
 ```
 
