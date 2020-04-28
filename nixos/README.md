@@ -6,8 +6,11 @@ Nix is a package manager for Linux and macOS with many characteristics of a func
 
 - [NixOS Manual](https://nixos.org/nixos/manual/index.html#sec-module-abstractions)
 - [Search Nix Packages](https://nixos.org/nixos/packages.html)
+    - Search with `!nixpkgs` in [DuckDuckGo](https://duckduckgo.com)
 - [Search NixOS options](https://nixos.org/nixos/options.html)
+    - Search with `!nixopts` in [DuckDuckGo](https://duckduckgo.com)
 - [GitHub](https://github.com/NixOS/nixpkgs)
+- [Nix Pills tutorial](https://nixos.org/nixos/nix-pills/index.html)
 
 ## macOS
 
@@ -31,8 +34,9 @@ For my laptop I use the latest `nixpkgs` `unstable`:
 
 ```shell
 $ sudo su
-$ nix-channel --list
-nixpkgs https://nixos.org/channels/nixpkgs-unstable
+# nix-channel --list
+nixpkgs https://nixos.org/channels/nixpkgs-20.03-darwin
+# nix-channel --update
 ```
 
 For servers I use the most recent dated channel,
@@ -49,9 +53,13 @@ Migration is usually painless.
 
 To install packages for a user, use `nix-env`:
 
-- `nix-env -qa` list installed packages
+- `nix-env -q` list installed packages
+- `nix-env -q foo` search installed packages for "foo"
+- `nix-env -qa '.*foo.*'` search available packages on your channels
+- `nix-env -qc` compare installed packages to available packages
 - `nix-env -i foo` install package
 - `nix-env -u foo` upgrade package
+- `nix-env -u` upgrade installed packages
 - `nix-env -e foo` uninstall package
 
 I use `nix-env` for a very small set of packages,
@@ -102,7 +110,7 @@ stdenv.mkDerivation {
 
 ## Utilities
 
-- `nix-collect-garbage` to clean up the `/nix/store`
+- `nix-collect-garbage` to remove unused stuff from the `/nix/store`
 
 ## /etc/nixos/configuration.nix
 
@@ -115,7 +123,7 @@ When you make changes, run `nixos-rebuild`:
 - `nixos-rebuild switch --upgrade` update the channel, rebuild, and switch
 - `nixos-rebuild switch --rollback` revert to the previous configuration
 
-## Basics
+A basic `configuration.nix` for an EC2 instance might look like this:
 
 ```
 {
@@ -139,6 +147,7 @@ When you make changes, run `nixos-rebuild`:
     description = "James A. Overton";
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [
+      # ...
     ];
   };
 
@@ -148,7 +157,7 @@ When you make changes, run `nixos-rebuild`:
 
 ## nginx
 
-I really like declarative configuration for web servers:
+I really like the declarative configuration for web servers:
 
 ```nix
   services.nginx = {
@@ -171,6 +180,12 @@ I really like declarative configuration for web servers:
     };
   };
 ```
+
+With `enableACME = true;` you get a free
+[Let's Encrypt SSL certificate](https://letsencrypt.org),
+automatically updated every three months.
+Let's Encrypt will check your server to ensure that you own the domain,
+so make sure that your DNS is configured before running this.
 
 ## Systemd
 
@@ -207,7 +222,7 @@ The `trap` allows for a cleaner restart from `systemd`.
 
 All this configuration is written in the
 [Nix expression language](https://nixos.org/nix/manual/#ch-expression-language)
-which has some useful tools for
+which has some basic tools for
 [abstractions](https://nixos.org/nixos/manual/index.html#sec-module-abstractions).
 I like these [examples](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55).
 
@@ -237,7 +252,20 @@ You can test this with `nix-instantiate`:
 
 ```shell
 $ nix-instantiate --eval --strict example.nix
-{ foo = { name = "Name: bar"; }; }
+{ services = { nginx = { virtualHosts = { "editor.obolibrary.org" = { enableACME = true; forceSSL = true; locations = { "/" = { proxyPass = "http://127.0.0.1:5001/"
+; }; }; }; }; }; }; }
+```
+
+which cleans up to what we would have written by hand:
+
+```nix
+{
+  services.nginx.virtualHosts."editor.obolibrary.org" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/".proxyPass = "http://127.0.0.1:5001/";
+  };
+}
 ```
 
 ## Containers
