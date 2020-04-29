@@ -85,7 +85,7 @@ stdenv.mkDerivation {
   name = "my-environment";
 
   buildInputs = [
-    jra8_headless
+    jre8_headless
   ];
 }
 ```
