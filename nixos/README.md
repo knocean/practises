@@ -6,7 +6,8 @@ The key benefits are declarative configuration and fully reproducible environmen
 
 ## Links
 
-- [NixOS Manual](https://nixos.org/nixos/manual/index.html#sec-module-abstractions)
+- [Nix Package Manager Manual](https://nixos.org/nix/manual/)
+- [NixOS Manual](https://nixos.org/nixos/manual/)
 - [Search Nix Packages](https://nixos.org/nixos/packages.html)
     - Search with `!nixpkgs` in [DuckDuckGo](https://duckduckgo.com)
 - [Search NixOS options](https://nixos.org/nixos/options.html)
@@ -92,7 +93,7 @@ stdenv.mkDerivation {
 
 The `shellHook` option is useful:
 
-```shell
+```nix
 with import <nixpkgs> {};
 
 stdenv.mkDerivation {
@@ -127,7 +128,7 @@ When you make changes, run `nixos-rebuild`:
 
 A basic `configuration.nix` for an EC2 instance might look like this:
 
-```
+```nix
 {
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
@@ -162,6 +163,7 @@ A basic `configuration.nix` for an EC2 instance might look like this:
 I really like the declarative configuration for web servers:
 
 ```nix
+{
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
@@ -181,6 +183,7 @@ I really like the declarative configuration for web servers:
       };
     };
   };
+}
 ```
 
 With `enableACME = true;` you get a free
@@ -194,6 +197,7 @@ so make sure that your DNS is configured before running this.
 A basic `systemd` wrapper for a `run.sh` script can look like this:
 
 ```nix
+{
   systemd.services."knocean.droid" = {
     enable = true;
     description = "DROID";
@@ -205,6 +209,7 @@ A basic `systemd` wrapper for a `run.sh` script can look like this:
       Restart = "always";
     };
   };
+}
 ```
 
 Then create a `run.sh` script with any secrets, and `chmod 700 run.sh`:
@@ -278,9 +283,11 @@ Add this to `configuration.nix` to enable container
 [networking](https://nixos.org/nixos/manual/index.html#sec-container-networking)
 
 ```nix
+{
   networking.nat.enable = true;
   networking.nat.internalInterfaces = ["ve-+"];
   networking.nat.externalInterface = "eth0";
+}
 ```
 
 Running `nixos-container create foo` will
