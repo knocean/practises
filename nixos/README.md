@@ -1,6 +1,8 @@
 # NixOS
 
-Nix is a package manager for Linux and macOS with many characteristics of a functional programming language. NixOS is a Linux distribution built on Nix.
+Nix is a package manager for Linux and macOS with many characteristics of a functional programming language.
+NixOS is a Linux distribution built on Nix.
+The key benefits are declarative configuration and fully reproducible environments.
 
 ## Links
 
