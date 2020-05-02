@@ -140,19 +140,19 @@ $ echo "${HOME}run"
 
 These mostly match Emacs shortcuts:
 
-- <c-c> cancel
-- <c-d> disconnect
-- <c-l> clear
-- <c-z> send process to background (then run `fg` to resume)
-- <c-a> start of line
-- <c-e> end of line
-- <c-p> previous line in history (also up arrow)
-- <c-n> previous line in history (also down arrow)
-- <c-r> search history
-- <c-w> cut previous word
-- <c-k> cut to end of line
-- <c-u> cut to start of line
-- <c-y> paste cut buffer
+- `<c-c>` cancel
+- `<c-d>` disconnect
+- `<c-l>` clear
+- `<c-z>` send process to background (then run `fg` to resume)
+- `<c-a>` start of line
+- `<c-e>` end of line
+- `<c-p>` previous line in history (also up arrow)
+- `<c-n>` previous line in history (also down arrow)
+- `<c-r>` search history
+- `<c-w>` cut previous word
+- `<c-k>` cut to end of line
+- `<c-u>` cut to start of line
+- `<c-y>` paste cut buffer
 
 # Linting
 
