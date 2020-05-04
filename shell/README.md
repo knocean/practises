@@ -27,11 +27,16 @@ They're roughly sorted by how often we use them
 cover the basic system operations.
 
 - `tree` list files directories as a tree
+- [`htop`](https://hisham.hm/htop/) interactive process viewer
 - [`tldr`](https://tldr.sh/) quick command-line examples to supplement `--help` and `man`
   (also <https://tldr.ostera.io> and `!tldr` on [DuckDuckGo](https://duckduckgo.com))
 - `xlsx2csv` e.g. `xlsx2csv --delimiter tab --sheetname Foo bar.xlsx > bar.tsv`
+- [`csvtool`](https://github.com/Chris00/ocaml-csv) (see also: https://packages.debian.org/buster/csvtool)
 - `dos2unix` fix line endings
 - [`pandoc`](https://pandoc.org) document format conversion, especially Markdown
+- [`pdftk`](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) PDF Toolkit
+- [`grip`](https://github.com/joeyespo/grip) GitHub Readme Instant Preview
+- [`vimdiff`](http://vimdoc.sourceforge.net/htmldoc/diff.html)
 - [`vcsh`](https://github.com/RichiH/vcsh) config (dotfiles) manager based on git
 - [`semver`](https://github.com/fsaintjacques/semver-tool) (Nix `semver-tool`)
   handy operations on Semantic Versioning strings
