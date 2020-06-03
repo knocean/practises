@@ -3,12 +3,12 @@ with import <nixpkgs> {};
 stdenv.mkDerivation {
   name = "python";
   buildInputs = [
-    python38Packages.virtualenv
+    python38Full
   ];
   shellHook = ''
     SOURCE_DATE_EPOCH=$(date +%s)
-    virtualenv _venv
-    source _venv/bin/activate
+    python3 -m venv .venv
+    source .venv/bin/activate
     pip install -r requirements.txt
   '';
 }
