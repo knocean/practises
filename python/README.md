@@ -12,11 +12,11 @@ We use Python 3.6+ for largish scripts and smallish libraries.
 
 Use [`venv`](https://docs.python.org/3/library/venv.html)
 to isolate your Python version and libraries from other projects.
-Each project using Python should have a `_venv` subdirectory.
+Each project using Python should have a `.venv` subdirectory.
 
 ```shell
-$ python3 -m venv _venv
-$ source _venv/bin/activate
+$ python3 -m venv .venv
+$ source .venv/bin/activate
 ```
 
 Use `pip` and a `requirements.txt` to install libraries:
