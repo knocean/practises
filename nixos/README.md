@@ -50,7 +50,7 @@ Migration is usually painless.
 - `nix-channel --list`
 - `nix-channel --update`
 - `nix-channel --remove nixos`
-- `nix-channel --add nixos https://nixos.org/channels/nixos-20.03`
+- `nix-channel --add https://nixos.org/channels/nixos-20.03 nixos`
 
 ## nix-env
 
@@ -125,6 +125,7 @@ When you make changes, run `nixos-rebuild`:
 - `nixos-rebuild switch` rebuild and use the new configuration
 - `nixos-rebuild switch --upgrade` update the channel, rebuild, and switch
 - `nixos-rebuild switch --rollback` revert to the previous configuration
+- `nixos-option` to query your current settings
 
 A basic `configuration.nix` for an EC2 instance might look like this:
 
