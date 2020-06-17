@@ -26,11 +26,16 @@ They're roughly sorted by how often we use them
 [GNU Coreutils](https://www.gnu.org/software/coreutils/manual/coreutils.html)
 cover the basic system operations.
 
+- `time` shell keyword, reports duration of a command
+- `\time -v` command, reports details on a command such as duration and peak memory usage
+- `timeout` kill command if it runs too long
 - `tree` list files directories as a tree
 - [`htop`](https://hisham.hm/htop/) interactive process viewer
 - [`tldr`](https://tldr.sh/) quick command-line examples to supplement `--help` and `man`
   (also <https://tldr.ostera.io> and `!tldr` on [DuckDuckGo](https://duckduckgo.com))
 - `xlsx2csv` e.g. `xlsx2csv --delimiter tab --sheetname Foo bar.xlsx > bar.tsv`
+- [visidata](https://www.visidata.org) interactive multitool for tabular data
+- [xsv](https://github.com/BurntSushi/xsv) fast tools for CSV manipulation
 - [`csvtool`](https://github.com/Chris00/ocaml-csv) (see also: https://packages.debian.org/buster/csvtool)
 - `dos2unix` fix line endings
 - [`pandoc`](https://pandoc.org) document format conversion, especially Markdown
