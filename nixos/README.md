@@ -13,6 +13,7 @@ The key benefits are declarative configuration and fully reproducible environmen
 - [Search NixOS options](https://nixos.org/nixos/options.html)
     - Search with `!nixopts` in [DuckDuckGo](https://duckduckgo.com)
 - [GitHub](https://github.com/NixOS/nixpkgs)
+- [Nix Terminology Primer](https://stephank.nl/p/2020-06-01-a-nix-primer-by-a-newcomer.html_
 - [Nix Pills tutorial](https://nixos.org/nixos/nix-pills/index.html)
 
 ## macOS
