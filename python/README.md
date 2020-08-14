@@ -75,6 +75,21 @@ and doesn't require a `Makefile`.
 - for single-file scripts, include tests in the same file
 - for multi-file projects, use a `tests/` directory
 
+## Packaging
+
+Except for one-off scripts, consider proper packaging for your Python projects,
+either as a module for local installs or for [PyPI](https://pypi.org).
+Python is old enough that there's been a few generations
+of packaging standards and tools.
+We've had luck with this guide:
+<https://realpython.com/pypi-publish-python-package/>.
+
+You can install a package locally (often useful for development) like this:
+
+```
+pip install -e .
+```
+
 ## F-strings, PEP 498
 
 I really like the [f-string](https://www.python.org/dev/peps/pep-0498/)
