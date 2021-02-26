@@ -146,6 +146,104 @@ $ echo "${HOME}run"
 - `*` and `**` file globs
 - `{foo,bar}` or `{1..10}` brace expansion (combinations)
 
+# Functions
+
+You can define your own functions like this:
+
+```
+func() {echo $1;}
+func "Foo"
+```
+
+They read their arguments like any script: `$1`, `$2`, etc.
+They return an exit code, like a script.
+They can also `echo` values or modify a variable,
+so that the caller can read the results.
+
+# Conditionals and Tests
+
+Read this nice [overview](https://thoughtbot.com/blog/the-unix-shells-humble-if) of conditionals and tests.
+The basic conditional form is:
+
+```
+if command ; then
+  expressions
+elif command ; then  # optionally
+  expressions
+else                 # optionally
+  expressions
+fi
+```
+
+A zero exit code evaluates to "True", and a non-zero exit code to "False".
+The `!` command will invert this.
+You can also use the `true` and `false` commands, `&&` and `||`, and other flow control.
+
+The [`test`](https://manpage.me/?q=test) command is built in to the shell and provides common operations.
+
+```
+if test "string" != "other string"; then
+  # now do something
+fi
+```
+
+The square bracket `[` is just an alias for `test`:
+
+```
+if [ "string" != "other string" ]; then
+  # same as if test "string" != "other string"; then
+fi
+```
+
+Either use the command syntax or the bracket syntax, but don't mix the two.
+Remember to quote defensively.
+
+Bash and other shells use `[[` for enhanced tests and `((` for enhanced arithmetic expressions.
+
+Shell also provides a `case` statement, which is a more complex conditional.
+This is often used for CLI intrafaces.
+The basic form is `case word in pattern | pattern ) list;; esac`.
+Here's an example:
+
+```
+echo answer yes or no
+read word
+case $word in
+	yes | YES )
+		echo you answered yes
+		;;
+	no | NO )
+		echo you answered no
+		;;
+esac
+```
+
+# Loops
+
+The shell provides `for`, `while`, and `unless` loops.
+When you find yourself reaching for complex loops and conditionals,
+consider whether you'd be better off with another language, such as Python.
+
+```
+while mytest
+do
+  echo mytest is still true
+done
+
+until testa
+do
+  echo mytest is still false
+done
+
+for i in 1 2 3 4 5 6 7 8 9 10
+do
+  echo $i
+done
+```
+
+Be very careful about quoting in the values part of the `for` loop.
+See [For - Repeating while changing a variable](https://www.grymoire.com/Unix/Sh.html#uh-81)
+
 # Keyboard Shortcuts
 
 These mostly match Emacs shortcuts:
