@@ -129,6 +129,47 @@ $ echo "${HOME}run"
 - `foo >> bar` run `foo` and append its output to the file `bar`
 - `foo < bar` send the contents of the file `bar` as input to `foo`
 
+Note that `<` sends file contents
+to STDIN of the previous command,
+`<<` sends a block of text,
+and `<<<` sends a single word.
+
+For `<<` you also have to specify the ending delimiter.
+People usually use `EOF`:
+
+```shell
+$ cat << EOF
+> Hello world!
+> EOF
+Hello world!
+```
+
+The shell will read until it sees a line containing
+only the ending delimiter that you specified
+(no trailing whitespace).
+You can mix with with variable substitution
+and redirect to a file.
+And `<<-` will strip leading tabs from each enclosed line
+to allow nicer indenting in a script:
+
+```shell
+$ NAME=James
+$ cat <<-EOF > hello.txt
+> 	Hello ${NAME}!
+> EOF
+$ cat hello.txt
+Hello James!
+```
+
+The third option is `<<<`
+which passes one word (a quoted string also counts)
+to the STDIN of the previous command:
+
+```shell
+$ cat <<< "Hello world!"
+Hello world!
+```
+
 # Shell Variables
 
 - `$?` exit code of previous command
