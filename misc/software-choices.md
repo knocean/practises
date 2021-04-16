@@ -212,4 +212,9 @@ He was politely explaining to *me*
 why he doesn't use *my* software,
 and now I'm rethinking a lot of things.
 
-<p><a href="https://commons.wikimedia.org/wiki/File:Rubber_duck_assisting_with_debugging.jpg#/media/File:Rubber_duck_assisting_with_debugging.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rubber_duck_assisting_with_debugging.jpg" alt="Rubber duck assisting with debugging.jpg"></a><br>By &lt;a href="//commons.wikimedia.org/wiki/User:Tom_Morris" title="User:Tom Morris"&gt;Tom Morris&lt;/a&gt; - &lt;span class="int-own-work" lang="en"&gt;Own work&lt;/span&gt;, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=16745966">Link</a></p>
+
+<a href="https://commons.wikimedia.org/wiki/File:Rubber_duck_assisting_with_debugging.jpg#/media/File:Rubber_duck_assisting_with_debugging.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rubber_duck_assisting_with_debugging.jpg" alt="Rubber duck assisting with debugging.jpg"></a>
+
+Image by <a href="//commons.wikimedia.org/wiki/User:Tom_Morris" title="User:Tom Morris">Tom Morris</a> - <span class="int-own-work" lang="en">Own work</span>,
+<a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>,
+<a href="https://commons.wikimedia.org/w/index.php?curid=16745966">Link</a>
