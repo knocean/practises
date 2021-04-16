@@ -138,6 +138,14 @@ then I need to have some idea of what it's doing and why.
 I like to see the first paragraph of the README
 spelling out what problem this software solves
 and a quick summary of how it solves the problem.
+That makes a very good first impression.
+
+Next I'll look for documentation.
+Documentation comes in various different forms,
+but there should be *something*.
+I especially like looking at integration tests
+(when I can find them)
+to see examples of how to use the software.
 
 If I'm interested in a piece of software,
 I'll look around the source tree.
