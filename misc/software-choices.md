@@ -196,7 +196,7 @@ I don't like doing that stuff -- who has time?!
 But that's exactly the point.
 This is all a signal that people are putting work into this project,
 likely a bunch of different people with different skill sets,
-and their sweating the details.
+and they're sweating the details.
 It gives me a warm feeling.
 
 So first I look for all those other things,
