@@ -161,6 +161,21 @@ This point really builds on the previous point:
 if the problem is too big,
 then it will be hard to explain.
 
+## I tried and it didn't work
+
+So I decided to give your software a try.
+I found a nice step-by-step instructions in your documentation. 
+But it doesn't work.
+It could be missing example files,
+not listing all depedencies,
+or need some special environemnt variable to be set. 
+I tried, looked around a bit, but it still doesn't work. 
+
+The issue is that I trusted you and the tutorial,
+and you've broken that trust.
+The time I spent on it feels like a waste,
+and now I'm not sure what other problems might be hiding in there.
+
 ## It doesn't seem to be maintained
 
 If your code is open,
