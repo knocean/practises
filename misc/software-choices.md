@@ -126,8 +126,6 @@ The big tool was built to solve one specific big problem.
 It solves that problem -- great!
 But now I have a different problem.
 
-
-
 ## I don't understand it
 
 I don't want to know all the details of your code.
@@ -163,15 +161,20 @@ This point really builds on the previous point:
 if the problem is too big,
 then it will be hard to explain.
 
-
 ## I tried and it didn't work
 
-It looks like it could be what I'm looking for, and I found a nice step-by-step instructions in your documentation. 
-But it doesn't work. It could be missing examples files, not listing all depedencies, or need that special encironemnt variable be set up. 
+So I decided to give your software a try.
+I found a nice step-by-step instructions in your documentation. 
+But it doesn't work.
+It could be missing example files,
+not listing all depedencies,
+or need some special environemnt variable to be set. 
 I tried, looked around a bit, but it still doesn't work. 
 
-The issue is that I trusted you and the tutorial, and you've broken that trust.
-I end up resenting the hour of my life I'm not getting back.
+The issue is that I trusted you and the tutorial,
+and you've broken that trust.
+The time I spent on it feels like a waste,
+and now I'm not sure what other problems might be hiding in there.
 
 ## It doesn't seem to be maintained
 
