@@ -125,14 +125,35 @@ $ echo "${HOME}run"
 - `foo && bar` run `foo`, and if it exits 0 then run `bar`
 - `foo || bar` run `foo`, and if it exits non-0 then run `bar`
 - `foo | bar` run `foo` and send its output (STDOUT and STDERR) as STDIN to `bar`
-- `foo > bar` run `foo` and write its output to the file `bar`
-- `foo >> bar` run `foo` and append its output to the file `bar`
-- `foo < bar` send the contents of the file `bar` as input to `foo`
 
-Note that `<` sends file contents
-to STDIN of the previous command,
-`<<` sends a block of text,
-and `<<<` sends a single word.
+## Output
+
+- `foo > bar` run `foo` and write its STDOUT to the file `bar`
+  (overwriting `bar`)
+- `foo >> bar` run `foo` and append its STDOUT to the file `bar`
+- redirect STDERR with `2>` or `2>>`
+  - a common idiom to ignore errors is `2> /dev/null`
+- redirect STDERR to STDOUT `2>&1`
+
+The key is that STDIN, STDOUT, and STDERR
+are numbered 0, 1, 2 respectively,
+with the default "0" or "1" usually omitted.
+
+This can get much [fancier](https://tldp.org/LDP/abs/html/io-redirection.html)
+But if you find yourself getting fancy,
+first take a look at `tee` from coreutils.
+
+## Input
+
+To send input to STDIN of the previous command,
+you have three options:
+
+- `<` sends file contents
+- `<< X ... X` sends lines of text between delimiters
+  - `<<-` strips leading tabs
+- `<<<` sends a single word
+
+So `foo < bar` sends the contents of the file `bar` as input to `foo`.
 
 For `<<` you also have to specify the ending delimiter.
 People usually use `EOF`:
@@ -149,7 +170,9 @@ only the ending delimiter that you specified
 (no trailing whitespace).
 You can mix with with variable substitution
 and redirect to a file.
-And `<<-` will strip leading tabs from each enclosed line
+And `<<-` will strip any number of leading tabs
+(but not other whitespace)
+from each enclosed line
 to allow nicer indenting in a script:
 
 ```shell
