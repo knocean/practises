@@ -13,6 +13,37 @@ I'm not asking you to change anything.
 You're great and your software is great,
 but I don't use it because:
 
+## I don't really need it
+
+I've got problems,
+but I've also got working solutions for most of my problems.
+The tools and workflows that I'm using today
+might not be as good as what you have to offer,
+but they're already working for me.
+I have a good sense of how they work and how they break.
+
+Your software may be free or inexpensive,
+but my time is precious to me.
+In order to use your software
+I need to access it, run it, test it, learn about it,
+actually use it for something,
+then maybe migrate existing systems to it.
+I might need to teach other people how to use it.
+Later I'll have to upgrade it, maintain it,
+and someday migrate away from it.
+Of all these costs,
+legacy systems usually outweigh all the rest.
+
+Your software can't just be *a bit* better
+than what I'm current using.
+It has to be *a lot* better.
+It has to save me time in the short run,
+look like it will save me time in the long run,
+and also convince me that it's worth the risk I'm taking
+by making a change
+to some piece of the bigger puzzle
+that is my work and life.
+
 ## It's SaaS (Software as a Service)
 
 I don't mind paying for great services and software,
