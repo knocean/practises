@@ -1108,7 +1108,7 @@ because we can mix structured text with free text:
   <bride>Donna Dominique Diangello</bride>
   and
   <groom>Donald Donatello Donaldson</groom>,
-  <datetime isoformat="2021-06-01T14:00-04:00>
+  <datetime isoformat="2021-06-01T14:00-04:00">
   at Two O'Clock on the afternoon
   of the First of June, Two-Thousand Twenty-One
   </datetime>,
