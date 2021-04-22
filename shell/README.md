@@ -16,6 +16,7 @@ Use a `Makefile` to coordinate shell invocations for each project.
 - [productivity tips](https://blog.balthazar-rouberol.com/shell-productivity-tips-and-tricks.html)
 - [shell tricks](https://www.etalabs.net/sh_tricks.html)
 - [bash obsolete syntax](https://wiki.bash-hackers.org/scripting/obsolete) with replacements
+- [unofficial bash strict mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
 
 # Utilities
 
