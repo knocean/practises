@@ -39,17 +39,17 @@ that I think are important.
 
 ## Sections
 
-1. [Binary](binary.md) a few short words, for completeness
-2. [Strings](strings.md)
-3. [Unstructured Text](unstructured-text.md)
-4. [Structured Text](structured-text.md)
-5. [Programming Languages](programming-languages.md)
-6. [Tables](tables.md)
-7. [Relational Data (SQL)](sql.md)
-8. [eXtensible Markup Language (XML)](xml.md)
-9. [JavaScript Object Notation (JSON)](json.md)
-10. [Resource Description Framework (RDF)](rdf.md)
-11. [Getting some Clojure](clojure.md)
+1. [Binary](binary.md): a few short words, for completeness
+2. [Strings](strings.md): no strings attached
+3. [Unstructured Text](unstructured-text.md): text for humans
+4. [Structured Text](structured-text.md): meeting machines part way 
+5. [Programming Languages](programming-languages.md): moving data
+6. [Tables](tables.md): data squared
+7. [Relational Data (SQL)](sql.md): beyond tables
+8. [eXtensible Markup Language (XML)](xml.md): a brave new world
+9. [JavaScript Object Notation (JSON)](json.md): just a new world
+10. [Resource Description Framework (RDF)](rdf.md): another world
+11. [Getting some Clojure](clojure.md): can we have nice things?
 
 ## Running Examples
 
