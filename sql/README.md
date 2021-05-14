@@ -12,8 +12,21 @@ we mostly care about two gold-standard open source implementations:
 
 - [RDFTab](https://github.com/ontodev/rdftab.rs)
   our RDF into SQL loader
+- [semantic-sql](https://github.com/cmungall/semantic-sql)
+  experiments with RDF and OWL in SQL
 
 ## SQLite
+
+SQLite is an embedded SQL database,
+so everything is contained in a single file.
+I love it for development workflows
+where I can delete and rebuild the database
+without worrying about stale data or permissions.
+The datatypes are very basic but sufficient for many tasks.
+There are nice bindings to every language,
+making it much faster than Python code.
+
+### Links
 
 - [Datasette](https://datasette.io)
   web interface with community of plugins
@@ -23,9 +36,23 @@ we mostly care about two gold-standard open source implementations:
   SQLite shell with autocomplete and syntax highlighting
 - [Simon Wilson's Blog on SQLite](https://simonwillison.net/tags/sqlite/)
   creator of Datasette collects great links
+- [SQLean](https://github.com/nalgeon/sqlean)
+  set of C extensions for SQLite
 
 ## Postgres
 
+Postgres is a database server.
+You kind of need to set it up and manage it,
+although it's possible to use a throwaway Docker container.
+Postgres is much more powerful and complex than SQLite,
+but most of the time I don't need the extra power.
+
+### Links
+
 - [PostgREST](https://postgrest.org)
-  automatic REST API for a Postgres database
+  automatic REST API for a Postgres database;
+  I wish there was a clone for SQLite!
+- [pgloader](https://pgloader.io)
+  move data to and from Postgres,
+  e.g. load from a SQLite .db file
 
