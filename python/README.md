@@ -26,6 +26,15 @@ $ pip install -r requirements.txt
 ```
 
 It's better to specify exact versions of your dependencies.
+You can install from `git` and other
+[version control systems](https://pip.pypa.io/en/stable/cli/pip_install/#vcs-support).
+This example uses the HTTPS URL from GitHub's Code / Clone button:
+
+```shell
+$ pip install git+https://github.com/ontodev/gizmos.git
+```
+
+This `git+https://github.com/ontodev/gizmos.git` can also be a line in `requirements.txt`.
 
 ## Style
 
