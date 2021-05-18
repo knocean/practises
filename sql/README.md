@@ -47,15 +47,6 @@ although it's possible to use a throwaway Docker container.
 Postgres is much more powerful and complex than SQLite,
 but most of the time I don't need the extra power.
 
-## SQLAlchemy
-
-[SQLAlchemy](https://www.sqlalchemy.org/) is a Python SQL toolkit and object-relational mapper (ORM).
-Many people avoid ORMs because of the
-[Impedance Mismatch](https://en.wikipedia.org/wiki/Object%E2%80%93relational_impedance_mismatch) problem,
-or because they prefer to avoid OO. SQLA can be used independent of the ORM, and if the ORM is used
-it can be done in a lightweight way.
-
-
 ### Links
 
 - [PostgREST](https://postgrest.org)
@@ -65,3 +56,11 @@ it can be done in a lightweight way.
   move data to and from Postgres,
   e.g. load from a SQLite .db file
 
+## SQLAlchemy
+
+[SQLAlchemy](https://www.sqlalchemy.org/) is a Python SQL toolkit and object-relational mapper (ORM).
+Many people avoid ORMs because of the
+[Impedance Mismatch](https://en.wikipedia.org/wiki/Object%E2%80%93relational_impedance_mismatch) problem,
+or because they prefer to avoid Object Oriented programming.
+SQLA can be used independent of the ORM,
+and if the ORM is used it can be done in a lightweight way.
