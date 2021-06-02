@@ -117,9 +117,9 @@ Make includes a number of
 mainly for manipulating strings and lists of strings.
 Here are some of the functions that I find most useful:
 
+- `$(shell cat foo)`: run a shell command
 - `$(word n,text)`: select the `n`th word from a space-separated list
 - `$(foreach var,list,text)`: for each `var` in `list` return `text` (with substitution)
-- `$(shell cat foo)`: run a shell command
 - filenames: `dir`, `notdir`, `basename`, `suffix`, `wildcard`
 
 ## Special Built-in Target Names
