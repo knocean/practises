@@ -39,7 +39,7 @@ For my laptop I use the latest `nixpkgs` `unstable`:
 ```shell
 $ sudo su
 # nix-channel --list
-nixpkgs https://nixos.org/channels/nixpkgs-20.03-darwin
+nixpkgs https://channels.nixos.org/nixpkgs-unstable
 # nix-channel --update
 ```
 
@@ -51,20 +51,25 @@ Migration is usually painless.
 - `nix-channel --list`
 - `nix-channel --update`
 - `nix-channel --remove nixos`
-- `nix-channel --add https://nixos.org/channels/nixos-20.03 nixos`
+- `nix-channel --add https://channels.nixos.org/nixos-22.05 nixos`
 
 ## nix-env
 
-To install packages for a user, use `nix-env`:
+To install packages for a user, use `nix-env`.
+When installing or updating packages
+The `-A` option is recommended --
+without it the memory usage can be very high.
 
 - `nix-env -q` list installed packages
 - `nix-env -q foo` search installed packages for "foo"
 - `nix-env -qa '.*foo.*'` search available packages on your channels
 - `nix-env -qc` compare installed packages to available packages
-- `nix-env -i foo` install package
-- `nix-env -u foo` upgrade package
+- `nix-env -iA nixpkgs.foo` install package
+- `nix-env -uA nixpkgs.foo` upgrade package
 - `nix-env -u` upgrade installed packages
 - `nix-env -e foo` uninstall package
+- `nix-env -I nixpkgs=channel:nixpkgs-unstable -iA nixpkgs.foo`
+  install a package from another channel, e.g. `unstable`
 
 I use `nix-env` for a very small set of packages,
 and `nix-shell` for project-specific dependencies.
@@ -81,32 +86,26 @@ $ nix-shell -p dos2unix
 For each project I create a `shell.nix` file then just run `nix-shell`:
 
 ```nix
-with import <nixpkgs> {};
-
-stdenv.mkDerivation {
-  name = "my-environment";
-
+with (import <nixpkgs> {});
+mkShell {
   buildInputs = [
-    jre8_headless
+    jdk11_headless
   ];
 }
-```
+````
 
 The `shellHook` option is useful:
 
 ```nix
-with import <nixpkgs> {};
-
-stdenv.mkDerivation {
-  name = "my-environment";
-
+with (import <nixpkgs> {});
+mkShell {
   buildInputs = [
-    python37Packages.virtualenv
+    python3
   ];
   shellHook = ''
     SOURCE_DATE_EPOCH=$(date +%s)
-    virtualenv _venv
-    source _venv/bin/activate
+    python3 -m venv .venv
+    source .venv/bin/activate
     pip install -r requirements.txt
   '';
 }
