@@ -306,3 +306,39 @@ nixos-container run foo -- su droid -c "cd /droid && make bar"
 ```
 
 One gotcha: container names are limited to 11 characters!
+
+
+## Operations
+
+### Resize Partition
+
+To make a root partition larger for an AWS EC2 instance,
+
+1. outside the machine: grow the volume using the web console or CLI
+2. inside the machine: resize the partition and file system
+
+- [AWS docs](https://aws.amazon.com/premiumsupport/knowledge-center/expand-root-ebs-linux/)
+
+The `growpart` utility is in the `cloud-utils` package.
+[Example](https://github.com/NixOS/nixpkgs/issues/22211#issuecomment-1118362326)
+(as root):
+
+```shell
+$ nix-shell -p cloud-utils
+...
+
+[nix-shell:~]# lsblk
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0  50G  0 disk 
+├─xvda1 202:1    0   1M  0 part 
+└─xvda2 202:2    0  35G  0 part /
+
+[nix-shell:~]# growpart /dev/xvda 2
+CHANGED: partition=2 start=4096 old: size=73396191 end=73400287 new: size=104853471 end=104857567
+
+[nix-shell:~]# resize2fs /dev/xvda2
+resize2fs 1.46.2 (28-Feb-2021)
+Filesystem at /dev/xvda2 is mounted on /; on-line resizing required
+old_desc_blocks = 5, new_desc_blocks = 7
+The filesystem on /dev/xvda2 is now 13106683 (4k) blocks long.
+```
